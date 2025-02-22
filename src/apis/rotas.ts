@@ -1,6 +1,6 @@
 import { Router, Request, Response } from "express";
 import { Usuario } from "../types/usuario";
-
+import { sendEmails } from "../service/sendemails";
 const rotas = Router();
 
 const usuario : Usuario= {
@@ -13,8 +13,8 @@ const usuario : Usuario= {
 }
 
 // Get all books
-rotas.get("/sendEmails", (req: Request, res: Response) => {
-    res.json(usuario);
+rotas.post("/sendEmails", (req: Request, res: Response) => {
+    res.json(sendEmails(req.body));
 });
 
 export default rotas ;
