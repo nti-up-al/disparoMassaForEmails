@@ -1,8 +1,9 @@
 import { Usuario } from "../types/usuario";
 const nodemailer = require("nodemailer");
 
-export const sendEmails  =  (teste : Usuario)=>{
-    //ISSO DEVE SER REMOVIDO NO FUTURO SEM MEDO DE SER FELIZ!!!!
+export const sendEmails  =  (usuario : Usuario)=>{
+    console.log(usuario);
+    //ISSO PODE SER REMOVIDO NO FUTURO SEM MEDO DE SER FELIZ!!!! 
     transport.sendMail({
         from: "UP <"+from_user+">",
         to: to_user,
