@@ -7,7 +7,7 @@ export const sendEmails  =  (usuario : Usuario)=>{
     transport.sendMail({
         from: "UP <"+from_user+">",
         to: to_user,
-        subject: "Testando envio com SMTP e Nodemailer.",
+        subject: "COBRNÇ UNID POPUL.",
         html:"<h1>TESTE<h1><p>Teste com SMTP E Nodemailer.<p>",
         text:  "ISSO È UJM TESTE DEV!!"
     }).then((response) => console.log("E-mail enviado com sucesso."))
@@ -32,6 +32,8 @@ const transport = nodemailer.createTransport({
         pass:password
     }
 });
+
+//FaZER UM FOR PaRa LER a LISTa DE USUaRIO 
 
 
 
