@@ -1,8 +1,11 @@
 import { Usuario } from "../types/usuario";
 const nodemailer = require("nodemailer");
 
-export const sendEmails  =  (usuario : Usuario)=>{
-    console.log(usuario);
+export const sendEmails  =  (usuarios : Usuario[])=>{
+    usuarios.forEach(element => {
+        
+    });
+    console.log(usuarios);
     //ISSO PODE SER REMOVIDO NO FUTURO SEM MEDO DE SER FELIZ!!!! 
     transport.sendMail({
         from: "UP <"+from_user+">",
