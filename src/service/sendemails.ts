@@ -1,11 +1,21 @@
 import { Usuario } from "../types/usuario";
 const nodemailer = require("nodemailer");
 
+
+
+const port_smtp = 587;
+const host_smtp = "smtp.gmail.com"; //roda no hotmail tambpem, só precisa mudar algumas variaveis
+var from_user = "rafael2mcont@gmail.com";
+var to_user= "";
+const password = "SENHSSSS"//"Senha do app do gmail ou senha do e-mail se hotmail";
+
+
 export const sendEmails  =  (usuarios : Usuario[])=>{
-    usuarios.forEach(element => {
-        
-    });
-    console.log(usuarios);
+    var emails = ["diego.almeida14@gmail.com", "rafaelldsrock@gmail.com"];
+    for(var email in emails){
+        to_user = to_user+email+", ";
+    };
+    console.log(to_user);
     //ISSO PODE SER REMOVIDO NO FUTURO SEM MEDO DE SER FELIZ!!!! 
     transport.sendMail({
         from: "UP <"+from_user+">",
@@ -17,13 +27,6 @@ export const sendEmails  =  (usuarios : Usuario[])=>{
 .catch((err) => console.log("Erro: "+err));
 return 'ok';
 }
-
-
-const port_smtp = 587;
-const host_smtp = "smtp.gmail.com"; //roda no hotmail tambpem, só precisa mudar algumas variaveis
-const from_user = "rafael2mcont@gmail.com";
-const to_user= "diego.almeida14@gmail.com";
-const password = "SENHSSSS"//"Senha do app do gmail ou senha do e-mail se hotmail";
 
 
 const transport = nodemailer.createTransport({
