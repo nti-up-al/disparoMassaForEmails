@@ -2,19 +2,23 @@ import { Usuario } from "../types/usuario";
 const nodemailer = require("nodemailer");
 
 export const sendEmails  =  (usuarios : Usuario[])=>{
-    usuarios.forEach(element => {
-        
+    usuarios.forEach(usuario => {
+        transport.sendMail({
+            from: "UP <"+from_user+">",
+            to: usuario.email,
+            subject: "COBRNÇ UNID POPUL.",
+            html:"<h1>TESTE<h1><p>Teste com SMTP E Nodemailer.<p>",
+            text:  "ISSO È UJM TESTE DEV!!"
+        }).then((response) => console.log("E-mail enviado com sucesso."))
+    .catch((err) => console.log("Erro: "+err));
     });
     console.log(usuarios);
     //ISSO PODE SER REMOVIDO NO FUTURO SEM MEDO DE SER FELIZ!!!! 
-    transport.sendMail({
-        from: "UP <"+from_user+">",
-        to: to_user,
-        subject: "COBRNÇ UNID POPUL.",
-        html:"<h1>TESTE<h1><p>Teste com SMTP E Nodemailer.<p>",
-        text:  "ISSO È UJM TESTE DEV!!"
-    }).then((response) => console.log("E-mail enviado com sucesso."))
-.catch((err) => console.log("Erro: "+err));
+
+
+
+
+
 return 'ok';
 }
 
