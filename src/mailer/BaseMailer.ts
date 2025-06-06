@@ -1,5 +1,7 @@
 import { createTransport, Transporter } from "nodemailer";
+import hbs from "nodemailer-express-handlebars";
 import SMTPTransport from "nodemailer/lib/smtp-transport";
+import path from "path";
 
 type SendResult = {
   success: boolean;
@@ -46,21 +48,19 @@ export abstract class BaseMailer {
       },
     };
 
-    return createTransport(transportOptions);
+    const templatesBasePath = path.resolve("./email_templates/");
+    const handlebarOptions = {
+      viewEngine: {
+        partialsDir: templatesBasePath,
+        defaultLayout: path.join(templatesBasePath, "layout"),
+      },
+      viewPath: path.join(templatesBasePath, "views"),
+    };
 
-    // const templatesBasePath = path.resolve("./email_templates/");
-    // const handlebarOptions = {
-    //   viewEngine: {
-    //     partialsDir: templatesBasePath,
-    //     defaultLayout: path.join(templatesBasePath, "layout"),
-    //   },
-    //   viewPath: path.join(templatesBasePath, "views"),
-    // };
+    const transporter = createTransport(transportOptions);
+    transporter.use("compile", hbs(handlebarOptions));
 
-    // const transporter = createTransport(transportOptions);
-    // transporter.use("compile", hbs(handlebarOptions));
-
-    // return transporter;
+    return transporter;
   }
 
   private getMailOptions() {
@@ -70,13 +70,13 @@ export abstract class BaseMailer {
       subject: this.subject,
       template: this.template,
       context: this.context,
-      // attachments: [
-      //   {
-      //     filename: "up.png",
-      //     path: path.resolve("./email_templates/assets/up.png"),
-      //     cid: "UpLogo",
-      //   },
-      // ],
+      attachments: [
+        {
+          filename: "up.png",
+          path: path.resolve("./email_templates/assets/up.jpg"),
+          cid: "UPLogo",
+        },
+      ],
     };
   }
 }
