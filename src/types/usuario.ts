@@ -1,7 +1,5 @@
- class Usuario{
-    nome:string;
-    email:string;
-    telefone:string;
+export type Usuario = {
+  nome: string;
+  email: string;
+  telefone: string;
 };
-
-export {Usuario}
