@@ -8,9 +8,9 @@ export class ContribuicaoMensal extends BaseMailer {
       "Lembrete de Contribuição Mensal",
       "contribuicao_mensal",
       {
-        nome: contribuinte.nome,
-        email: contribuinte.email,
-        telefone: contribuinte.telefone,
+        nomeContribuinte: contribuinte.nome,
+        emailContribuinte: contribuinte.email,
+        telefoneContribuinte: contribuinte.telefone,
       }
     );
   }

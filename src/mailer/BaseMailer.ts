@@ -69,11 +69,11 @@ export abstract class BaseMailer {
       to: this.to,
       subject: this.subject,
       template: this.template,
-      context: this.context,
+      context: { ...this.context, year: new Date().getFullYear() },
       attachments: [
         {
           filename: "up.png",
-          path: path.resolve("./email_templates/assets/up.jpg"),
+          path: path.resolve("./email_templates/assets/up_logo.png"),
           cid: "UPLogo",
         },
       ],
