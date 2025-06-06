@@ -4,9 +4,7 @@ import { Contribuinte } from "../types/contribuinte";
 
 const rotas = Router();
 
-rotas.post("/sendEmails", (req: Request, res: Response) => {
-  // Zod Validations
-
+rotas.post("/contribuicao-mensal", (req: Request, res: Response) => {
   for (const contribuinte of req.body as Contribuinte[]) {
     new ContribuicaoMensal(contribuinte).send();
   }
