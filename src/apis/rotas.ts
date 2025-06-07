@@ -1,13 +1,15 @@
-import { Router, Request, Response } from "express";
-import { Usuario } from "../types/usuario";
-import { sendEmails } from "../service/sendemails";
+import { Request, Response, Router } from "express";
+import { ContribuicaoMensal } from "../mailer/ContribuicaoMensal";
+import { Contribuinte } from "../types/contribuinte";
+
 const rotas = Router();
 
+rotas.post("/contribuicao-mensal", (req: Request, res: Response) => {
+  for (const contribuinte of req.body as Contribuinte[]) {
+    new ContribuicaoMensal(contribuinte).send();
+  }
 
-
-// Get all books
-rotas.post("/sendEmails", (req: Request, res: Response) => {
-    res.json(sendEmails(req.body));
+  res.json({});
 });
 
-export default rotas ;
+export default rotas;

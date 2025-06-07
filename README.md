@@ -1,17 +1,20 @@
-# disparoMassa
+# Disparo Massa
 
+POST: <http://localhost:3000/api/contribuicao-mensal>
 
-POST : 
-localhost:3000/api/sendEmails
+Body:
 
-OBJETO:
-
-[{
-    "nome": "ddddd",
-    "email": "",
-    "telefone": ""
-},{
-    "nome": "ddddd",
-    "email": "",
-    "telefone": ""
-}]
+```json
+[
+  {
+    "nome": "José",
+    "email": "jose@mail.com",
+    "telefone": "82999999999"
+  },
+  {
+    "nome": "Maria",
+    "email": "maria@mail.com",
+    "telefone": "82988888888"
+  }
+]
+```
