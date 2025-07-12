@@ -4,9 +4,9 @@ import { Contribuinte } from "../types/contribuinte";
 
 const rotas = Router();
 
-rotas.post("/contribuicao-mensal", (req: Request, res: Response) => {
+rotas.post("/contribuicao-mensal", async (req: Request, res: Response) => {
   for (const contribuinte of req.body as Contribuinte[]) {
-    new ContribuicaoMensal(contribuinte).send();
+    await new ContribuicaoMensal(contribuinte).send();
   }
 
   res.json({});
