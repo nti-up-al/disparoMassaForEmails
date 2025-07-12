@@ -67,6 +67,7 @@ export abstract class BaseMailer {
     return {
       from: `"UP Alagoas" <${this.configs.from}>`,
       to: this.to,
+      replyTo: this.configs.from,
       subject: this.subject,
       template: this.template,
       context: { ...this.context, year: new Date().getFullYear() },
@@ -75,6 +76,11 @@ export abstract class BaseMailer {
           filename: "up.png",
           path: path.resolve("./email_templates/assets/up_logo.png"),
           cid: "UPLogo",
+        },
+        {
+          filename: "qr_code_pix.jpeg",
+          path: path.resolve("./email_templates/assets/qr_code_pix.jpeg"),
+          cid: "QRCodePix",
         },
       ],
     };
